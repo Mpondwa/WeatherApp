@@ -28,18 +28,16 @@ namespace WeatherApp.Views
         {
             base.OnAppearing();
 
-            await Task.Run(async () =>
-            {
-                _viewModel.IsLoading = true;
+            _viewModel.IsLoading = true;
 
-                await _viewModel.GetCurrentWeather();
+            await _viewModel.GetCurrentWeather();
 
-                await _viewModel.GetFiveDayForecast();
+            _viewModel.SetTheme();
 
-                _viewModel.SetTheme();
+            await _viewModel.GetFiveDayForecast();
 
-                _viewModel.IsLoading = false;
-            });
+
+            _viewModel.IsLoading = false;
         }
     }
 }

@@ -9,6 +9,7 @@ using WeatherApp.Models;
 using WeatherApp.Resources;
 using WeatherApp.Services;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace WeatherApp.ViewModel
 {
@@ -87,7 +88,11 @@ namespace WeatherApp.ViewModel
             }
             catch (Exception ex)
             {
-
+                //TODO: Handle different exceptions
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "There was an error while fetching weather data. Please try again later", "Ok");
+                });
             }
         }
 
@@ -140,7 +145,11 @@ namespace WeatherApp.ViewModel
             }
             catch (Exception ex)
             {
-
+                //TODO: Handle different exceptions
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "There was an error while fetching weather data. Please try again later", "Ok");
+                });
             }
         }
 
